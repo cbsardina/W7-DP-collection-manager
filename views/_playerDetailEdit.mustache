@@ -1,0 +1,42 @@
+<div class="mainProfile">
+  <img class="picBig" src="{{avatar}}" alt="Player Picture">
+  <div class="">
+    <form class="editPlayer" action="/update" method="PUT">
+      <h1>View & Update</h1>
+      <fieldset>
+        <legend>Player and Position</legend>
+        <input type="text" name="name" value="{{name}}">
+        <input type="text" name="position" value="{{position}}">
+      </fieldset>
+      <fieldset>
+        <legend>School and Team</legend>
+        <input type="text" name="school" value="{{school}}">
+        <input type="text" name="team" value="{{team}}">
+      </fieldset>
+      <fieldset>
+        <legend>Skills</legend>
+        {{#skills}}
+        <input type="text" name="skills" value="{{.}}">
+        {{/skills}}
+      </fieldset>
+      <fieldset>
+        <legend>Email and Phone</legend>
+        <input type="email" name="email" value="{{email}}">
+        <input type="text" name="phone" value="{{phone}}">
+      </fieldset>
+      <fieldset>
+        <legend>Address</legend>
+        <input type="text" name="streetNum" value="{{address.street_num}}">
+        <input type="text" name="streetName" value="{{address.street_name}}">
+        <input type="text" name="city" value="{{address.city}}">
+        <input type="text" name="state" value="{{address.state}}">
+        <input type="text" name="zip" value="{{address.zip_code}}">
+      </fieldset>
+      <fieldset>
+        <legend>Picture</legend>
+        <input type="text" name="picture" value="{{avatar}}">
+      </fieldset>
+      <button type="submit" name="update">Update</button>
+    </form>
+  </div>
+</div>
