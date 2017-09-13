@@ -42,7 +42,8 @@ h3 {
   border: 1px solid gray;
   border-radius: 50%;
   display: flex;
-  margin: auto 3em;
+  margin-right: 3em;
+  width: 35%;
 }
 .about {
   display: flex;
@@ -179,11 +180,18 @@ fieldset {
     border: 2px groove;
     margin-bottom: .75em;
 }
-input[name='picture'] {
-  width: 40em;
+input[name='skills'], input[name='picture'] {
+  width: 80%;
 }
 input[name="state"], input[name="zip"] {
   width: 15%;
+}
+
+/*add_Player*/
+.addMain {
+  width: 80%;
+  margin: .5em auto;
+  padding: 1em;
 }
 
 

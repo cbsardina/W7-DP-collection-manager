@@ -12,12 +12,11 @@
   <ul class="nav nav-pills">
     <li><a href="/">Index</a></li>
     <li><a class="active" href="/add_player">Add a Player</a></li>
-    <li><a href="/edit_profile">Edit Profile</a></li>
   </ul>
 </header>
 <!-- ---------- SIGNUP SECTION ---------- -->
-<div class="">
-  <form class="addPlayer" action="/addPlayer" method="POST">
+<div class="addMain">
+  <form class="addPlayer" action="/index" method="POST">
     <h1>View & Update</h1>
     <fieldset>
       <legend>Player and Position</legend>
@@ -31,7 +30,7 @@
     </fieldset>
     <fieldset>
       <legend>Skills</legend>
-      <input type="text" name="skills" placeholder="Skills">
+      <input type="text" name="skills" placeholder="Skills Separated by a ','">
     </fieldset>
     <fieldset>
       <legend>Email and Phone</legend>

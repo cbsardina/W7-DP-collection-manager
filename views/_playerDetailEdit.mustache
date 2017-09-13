@@ -1,7 +1,7 @@
 <div class="mainProfile">
   <img class="picBig" src="{{avatar}}" alt="Player Picture">
   <div class="">
-    <form class="editPlayer" action="/update" method="PUT">
+    <form class="editPlayer" action="/index" method="PUT">
       <h1>View & Update</h1>
       <fieldset>
         <legend>Player and Position</legend>
@@ -15,9 +15,7 @@
       </fieldset>
       <fieldset>
         <legend>Skills</legend>
-        {{#skills}}
-        <input type="text" name="skills" value="{{.}}">
-        {{/skills}}
+        <input type="text" name="skills" value="{{#skills}}{{.}}, {{/skills}}">
       </fieldset>
       <fieldset>
         <legend>Email and Phone</legend>

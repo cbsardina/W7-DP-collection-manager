@@ -66,20 +66,20 @@ app.get('/', (req, res) => {
 
 
 // ------------ FULL PLAYER PROFILE ------------------------
-app.get('/index/:id', (req, res) => {
+app.get('/detail_edit/:id', (req, res) => {
   const playaId = parseInt(req.params.id, 10)
   console.log(req.session)
   findById(playaId).then(function(aplaya) {
     res.render('onePlayer', aplaya[0])
   })
 })
-
+app.put('/index/:id', (req, res) => {
+  res.redirect('/')
+})
 // ---------- JOB SEEKERS ----------------------
-// app.get('/job_seekers', (req, res) => {
-//   getUnemployed().then(function(roboUnemp) {
-//     res.render('unemployed', {roboUnemp});
-//   })
-// })
+app.get('/add_player', (req, res) => {
+  res.render('add_player')
+})
 
 // ------------- EMPLOYED -----------------------
 // app.get('/employed', (req, res) => {
