@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const PlayerSchema = new mongoose.Schema({
-  id: Number,
   name: { type: String, require: true },
   avatar: { type: String },
   email: { type: String },

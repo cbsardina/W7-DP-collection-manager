@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Delete Player</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav nav-pills">
+        <li><a href="/">Index</a></li>
+        <li><a href="/add_player">Add a Player</a></li>
+      </ul>
+    </header>
+    <h1 style="text-align: center">Delete Player</h1>
+    <div class="">
+      {{>_playerIndex}}
+    </div>
+    <h2 style="text-align: center; color: red;">ARE YOU SURE YOU WANT TO PERMANENTLY DELETE THIS PLAYER?</h2>
+    <form class="" action="/remove_player/{{_id}}" method="POST">
+      <button id="delete" type="submit" name="delete">DELETE</button>
+    </form>
+  </body>
+</html>

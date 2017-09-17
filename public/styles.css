@@ -193,6 +193,16 @@ input[name="state"], input[name="zip"] {
   margin: .5em auto;
   padding: 1em;
 }
+/*delete_player*/
+#delete {
+  margin: 0 auto;
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
 
+}
+#delete:active {
+  background-color: red;
+}
 
 /*----- fin -----*/

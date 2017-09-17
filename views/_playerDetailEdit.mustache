@@ -1,40 +1,41 @@
 <div class="mainProfile">
   <img class="picBig" src="{{avatar}}" alt="Player Picture">
   <div class="">
-    <form class="editPlayer" action="/index" method="PUT">
+    <form class="editPlayer" action="/detail_edit/{{_id}}" method="POST">
       <h1>View & Update</h1>
       <fieldset>
         <legend>Player and Position</legend>
-        <input type="text" name="name" value="{{name}}">
-        <input type="text" name="position" value="{{position}}">
+        <input type="text" name="name" value="{{name}}" placeholder="Name">
+        <input type="text" name="position" value="{{position}}" placeholder="Position">
       </fieldset>
       <fieldset>
         <legend>School and Team</legend>
-        <input type="text" name="school" value="{{school}}">
-        <input type="text" name="team" value="{{team}}">
+        <input type="text" name="school" value="{{school}}" placeholder="School">
+        <input type="text" name="team" value="{{team}}" placeholder="Team">
       </fieldset>
       <fieldset>
         <legend>Skills</legend>
-        <input type="text" name="skills" value="{{#skills}}{{.}}, {{/skills}}">
+        <input type="text" name="skills" value="{{#skills}}{{.}}{{/skills}}" placeholder="Skills">
       </fieldset>
       <fieldset>
         <legend>Email and Phone</legend>
-        <input type="email" name="email" value="{{email}}">
-        <input type="text" name="phone" value="{{phone}}">
+        <input type="email" name="email" value="{{email}}" placeholder="Email">
+        <input type="text" name="phone" value="{{phone}}" placeholder="Phone #">
       </fieldset>
       <fieldset>
         <legend>Address</legend>
-        <input type="text" name="streetNum" value="{{address.street_num}}">
-        <input type="text" name="streetName" value="{{address.street_name}}">
-        <input type="text" name="city" value="{{address.city}}">
-        <input type="text" name="state" value="{{address.state}}">
-        <input type="text" name="zip" value="{{address.zip_code}}">
+        <input type="text" name="streetNum" value="{{address.street_num}}" placeholder="Street Number">
+        <input type="text" name="streetName" value="{{address.street_name}}" placeholder="Street Name">
+        <input type="text" name="city" value="{{address.city}}" placeholder="City">
+        <input type="text" name="state" value="{{address.state}}" placeholder="State">
+        <input type="text" name="zip" value="{{address.zip_code}}" placeholder="Zip Code">
       </fieldset>
       <fieldset>
         <legend>Picture</legend>
-        <input type="text" name="picture" value="{{avatar}}">
+        <input type="text" name="avatar" value="{{avatar}}" placeholder="Picture">
       </fieldset>
       <button type="submit" name="update">Update</button>
+      <a href="/delete_player/{{_id}}"><button type="button" name="delete">Delete</button></a>
     </form>
   </div>
 </div>

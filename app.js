@@ -8,12 +8,9 @@ const session = require('express-session')
 const {
   getAllPlayers,
   findById,
-  getUnemployed,
-  getEmployed,
-  findByUsername,
-  addRobot,
-  updateRobot,
-  addRoboPasswords
+  updatePlayer,
+  addPlayer,
+  deletePlayer
 } = require('./dal');
 const Player = require('./model')
 const MongoStore = require('connect-mongo')(session)
@@ -43,101 +40,63 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// verify login
-// function isLoggedIn(req, res, next) {
-//   if(req.session.usr) {
-//     next();
-//   }
-//   else {
-//     res.render('sorry');
-//   }
-// }
-
 
 //============== ROUTES ========================
 
 // ------------- ALL PLAYERS --------------------------
+
 app.get('/', (req, res) => {
+  res.redirect('/index')
+})
+app.get('/index', (req, res) => {
   getAllPlayers().then(function(playas) {
-    console.log(req.session)
     res.render('index', {playas})
   })
 })
 
-
-// ------------ FULL PLAYER PROFILE ------------------------
-app.get('/detail_edit/:id', (req, res) => {
-  const playaId = parseInt(req.params.id, 10)
-  console.log(req.session)
-  findById(playaId).then(function(aplaya) {
+// ------------ FULL PLAYER PROFILE & EDIT ------------------------
+app.get('/detail_edit/:_id', (req, res) => {
+  // const playaId = parseInt(req.params._id, 10)
+  findById(req.params._id).then(function(aplaya) {
     res.render('onePlayer', aplaya[0])
   })
 })
-app.put('/index/:id', (req, res) => {
-  res.redirect('/')
+app.post('/detail_edit/:_id', (req, res) => {
+  const b = req.body
+  updatePlayer(req.params._id, b.name, b.avatar, b.email,
+                          b.school, b.position, b.team, b.skills,
+                          b.phone, b.streetNum, b.streetName, b.city,
+                          b.state, b.zip)
+        res.redirect('/index')
+
 })
-// ---------- JOB SEEKERS ----------------------
+// ---------- ADD PLAYER ----------------------
 app.get('/add_player', (req, res) => {
   res.render('add_player')
 })
-
-// ------------- EMPLOYED -----------------------
-// app.get('/employed', (req, res) => {
-//   getEmployed().then(function(roboEmp) {
-//       res.render('employed', {roboEmp});
-//   })
-// })
-
-// ------------- LOGIN -----------------------
-app.get('/login', (req, res) => {
-  res.render('login');
+app.post('/add_player', (req, res) => {
+  const b = req.body
+  addPlayer(b.name, b.avatar, b.email, b.school, b.position, b.team,
+            b.skills, b.skills, b.phone, b.streetNum, b.streetName, b.city, b.state, b.zip)
+  res.redirect('/index')
 })
 
-// ------------- REGISTER/ADD -----------------------
-app.get('/register', (req, res) => {
-  res.render('register');
-})
-
-app.post('/register', (req, res) => {
-  addRobot(req.body).then(function() {
-    res.render('edit_profile')
+// ---------- DELETE PLAYER ----------------------
+app.get('/delete_player/:_id', (req, res) => {
+  findById(req.params._id).then(function(aplaya) {
+    res.render('delete_player', aplaya[0])
   })
 })
-
-// ------------- EDIT -----------------------
-app.get('/edit_profile', (req, res) => {
-  addRoboPasswords().then(function() {      // fix this. used to add passwords to db
-    res.redirect('/')                 // <== change back to render('/edit_profile')
+app.post('/remove_player/:_id', (req, res) => {
+  deletePlayer(req.params._id).then(function() {
+      res.redirect('/index')
   })
-})
 
-// ---------- /LOGOUT ----------
-app.get('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/');
-  })
 })
 
 //============ SET PORT =========================
-app.set('port', 3003);
+app.set('port', 3000);
 
 app.listen(app.get('port'), () => {
-  console.log('Application has started at port 3003')
+  console.log('Application has started at port 3000')
 });
-
-
-
-// ================== NOT BEING USED========================
-//
-// // ------------- FIND by COUNTRY --------------------
-// app.get('/index/:country', function (request, response) {
-//   const roboCountry = roboDal.getRoboByCountry(request.params.country);
-//     response.render('country', {roboCountry})
-// })
-//
-// // -------------- FIND by SKILLS --------------------
-// app.get('/skills/:.', function (request, response) {
-//   const roboSkills = roboDal.getRoboBySkill(request.params.skills);
-//     response.render('skills', {roboSkills})
-// })
-// ^^^^^^^^^^^^^^^^^ NOT BEING USED ^^^^^^^^^^^^^^^^^^^^^^^^^^
