@@ -4,7 +4,7 @@
   flex-flow: row wrap;
   justify-content: space-around;
 }
-.roboIndx {
+.playaIndx {
   margin: 1em auto;
   padding: .5em;
   border: 3px solid #000;
@@ -23,7 +23,7 @@ h3 {
 .small {
   margin: 1em;
 }
-.unemployed {
+.noTeam {
   color: red;
   font-weight: 600;
   margin: 1em;
@@ -51,30 +51,12 @@ h3 {
   flex-flow: column;
   margin-left: 2em;
 }
-.edAndSkill {
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-.edu {
-  width: 44%;
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-}
-.edu p {
-  margin-bottom: 12px;
-}
-
 .info {
   width: 44%;
   display: flex;
   flex-flow: row;
-  /*align-items: flex-start;*/
 }
-.edu h3, .info h3 {
+.info h3 {
   color: #000;
 }
 
