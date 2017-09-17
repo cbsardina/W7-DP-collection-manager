@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost:27017/playerdb', {
   useMongoClient: true
 })
 
-// ---------- getRobots from DB ----------
+// ---------- getAllPlayers from DB ----------
 function getAllPlayers () {
   return Player.find()
 }
